@@ -78,6 +78,10 @@
       g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol, t + dur * .3); g.gain.linearRampToValueAtTime(0, t + dur);
       s.connect(f); f.connect(g); g.connect(this.fx); s.start(t); s.stop(t + dur + .05);
     },
+    async arq(url, vol = .7, fallback) { // toca um efeito em arquivo; se faltar, cai no som sintetizado
+      if (!this.ctx || !this.on) return; const b = await this.buf(url); if (!b) { fallback && fallback(); return; }
+      const c = this.ctx, s = c.createBufferSource(), g = c.createGain(); s.buffer = b; g.gain.value = vol; s.connect(g); g.connect(this.fx); s.start();
+    },
     sino() { [220, 553, 880, 1210, 1712].forEach((f, k) => this.tom(f, 6 - k * .8, [.08, .05, .035, .02, .012][k], 'sine', 0)); },
     brilho() { [1318, 1760, 2637].forEach((f, k) => this.tom(f, 2.4, .025, 'sine', k * .09)); },
     passo(k) { const pz = L.passos[k % L.passos.length]; this.trecho('assets/audio/sfx/passo-armadura.mp3', pz[0], pz[1], .75); },
@@ -193,9 +197,14 @@
       p.innerHTML = txt.split(/(?<=[.!?])\s+/).map((f) => `<span class="frase oculta">${palavras(f, { passo: 45 })}</span>`).join(' ');
     } else p.innerHTML = palavras(txt, { apaga: opts.apaga, passo: it.k === 'm' ? 30 : 55 });
     $('#texto .corpo').appendChild(p);
-    const tx2 = $('#texto'); tx2.scrollTop = tx2.scrollHeight;
+    const tx2 = $('#texto'); tx2.scrollTop = tx2.scrollHeight; atualizaRola();
     return p;
   }
+  const atualizaRola = () => { const t = $('#texto'); t.classList.toggle('rola', t.scrollHeight > t.clientHeight + 3); };
+  const medeGesto = () => { document.documentElement.style.setProperty('--gh', ($('#gesto').offsetHeight || 0) + 'px'); setTimeout(atualizaRola, 900); };
+  const gestoOn = () => { $('#gesto').className = 'on'; document.body.classList.add('gesto'); requestAnimationFrame(medeGesto); setTimeout(medeGesto, 300); };
+  const gestoOff = () => { $('#gesto').className = 'feito'; document.body.classList.remove('gesto'); setTimeout(atualizaRola, 1000); };
+  addEventListener('resize', () => { medeGesto(); atualizaRola(); });
   const leitura = (it) => clamp(tx(it.t).length * 40, 1600, 5600);
 
   // ---------------------------------------------------------------- páginas
@@ -204,7 +213,7 @@
   function render(dir = 1) {
     limpaTimers(); if (gestoLimpa) { gestoLimpa(); gestoLimpa = null; } A.calar(); videoScrub = null;
     const p = P[st.i]; atmosfera(p); setFundo(p.fundo); A.zona(p.som);
-    $('#texto .corpo').innerHTML = ''; $('#gesto').innerHTML = ''; $('#gesto').className = ''; $('#titulo').className = '';
+    $('#texto .corpo').innerHTML = ''; $('#gesto').innerHTML = ''; $('#gesto').className = ''; document.body.classList.remove('gesto'); $('#titulo').className = '';
     $('#volt').classList.toggle('on', st.i > 0); pronta(false);
     document.body.dataset.pag = p.id;
     if (p.limiar) return limiar(p);
@@ -219,8 +228,8 @@
     if (!fila.length) { st.lidas[p.id] = 1; salvar(); pronta(true); return; }
     const it = fila.shift();
     if (it.fundo) setFundo(it.fundo);
-    if (it.gesto) { $('#gesto').className = 'on'; gestoLimpa = GESTOS[it.gesto](it, () => { gestoLimpa = null; $('#gesto').className = 'feito'; st.feitos[it.gesto] = 1; salvar(); later(() => avanca(p), 700); }); return; }
-    if (it.passos) { paragrafo(it, { passos: true }); $('#gesto').className = 'on'; gestoLimpa = GESTOS.andar(it, () => { gestoLimpa = null; $('#gesto').className = 'feito'; st.feitos.andar = 1; salvar(); later(() => avanca(p), 900); }); return; }
+    if (it.gesto) { gestoOn(); gestoLimpa = GESTOS[it.gesto](it, () => { gestoLimpa = null; gestoOff(); st.feitos[it.gesto] = 1; salvar(); later(() => avanca(p), 700); }); return; }
+    if (it.passos) { paragrafo(it, { passos: true }); gestoOn(); gestoLimpa = GESTOS.andar(it, () => { gestoLimpa = null; gestoOff(); st.feitos.andar = 1; salvar(); later(() => avanca(p), 900); }); return; }
     paragrafo(it);
     if (p.nome && /Laura/.test(tx(it.t))) later(() => A.brilho(), 900);
     let dur = leitura(it);
@@ -310,11 +319,11 @@
     },
     porta(it, done) { // a porta se abre no próprio ritmo
       const g = $('#gesto'); g.innerHTML = `<div class="g-trilho"><span class="g-alca"></span></div>${legenda(U('porta'), U('portaDica'))}`;
-      let ult = 0;
+      let somou = false;
       return arrastar($('.g-trilho', g), { ritmo: .2, aoMudar: (k, ativo) => {
         if (videoScrub) { const { v, ini, fim } = videoScrub; const t = ini + k * (fim - ini); if (Math.abs(v.currentTime - t) > .03) v.currentTime = t; }
-        if (ativo && k - ult > .04) { ult = k; A.sopro(.5, 180 + k * 260, .035, 6); }
-      }, aoFim: () => { A.sopro(1.6, 140, .03, 4); done(); if (P[st.i].auto) later(irProxima, 1600); } });
+        if (ativo && !somou && k > .02) { somou = true; A.arq('assets/audio/sfx/porta-rangido.mp3', .8, () => A.sopro(2.4, 160, .035, 5)); }
+      }, aoFim: () => { done(); if (P[st.i].auto) later(irProxima, 1600); } });
     },
     vidro(it, done) { // a menina fala para o vidro escuro; o dedo desembaça
       const g = $('#gesto'); g.innerHTML = legenda(U('vidro'), U('vidroDica'));
@@ -327,7 +336,7 @@
         if (feito) return; const x = e.clientX / 2, y = e.clientY / 2;
         cx.globalCompositeOperation = 'destination-out'; const r = Math.min(W, H) * .09, gg = cx.createRadialGradient(x, y, 0, x, y, r);
         gg.addColorStop(0, 'rgba(0,0,0,1)'); gg.addColorStop(1, 'rgba(0,0,0,0)'); cx.fillStyle = gg; cx.beginPath(); cx.arc(x, y, r, 0, 7); cx.fill();
-        const t = performance.now(); if (t - ult > 140) { ult = t; A.sopro(.18, 2400 + Math.random() * 900, .02, 9); }
+        const t = performance.now(); if (t - ult > 1500) { ult = t; A.arq('assets/audio/sfx/vidro-dedo.mp3', .7, () => A.sopro(.4, 2600, .02, 9)); }
       };
       const mede = setInterval(() => { // quanto do vidro já está limpo
         const d = cx.getImageData(0, 0, W, H).data; let vazio = 0, tot = 0;
@@ -352,8 +361,8 @@
     postura(it, done) { return Postura(done); },
     coberta(it, done) { // puxar a coberta até o queixo
       const g = $('#gesto'); g.innerHTML = `<div class="g-trilho vertical"><span class="g-alca"></span></div>${legenda(U('coberta'), U('cobertaDica'))}`;
-      const pano = document.createElement('div'); pano.id = 'pano'; document.body.appendChild(pano); let ult = 0;
-      return arrastar($('.g-trilho', g), { eixo: 'y', aoMudar: (k, ativo) => { pano.style.setProperty('--k', k); if (ativo && k - ult > .06) { ult = k; A.sopro(.5, 700, .03, .8); } },
+      const pano = document.createElement('div'); pano.id = 'pano'; document.body.appendChild(pano); let somou = false;
+      return arrastar($('.g-trilho', g), { eixo: 'y', aoMudar: (k, ativo) => { pano.style.setProperty('--k', k); if (ativo && !somou && k > .03) { somou = true; A.arq('assets/audio/sfx/coberta.mp3', .8, () => A.sopro(1.6, 700, .03, .8)); } },
         aoFim: () => { pano.classList.add('some'); setTimeout(() => pano.remove(), 2200); done(); } });
     },
     rosto(it, done) { return Rosto(it, done); },
@@ -363,8 +372,8 @@
   function Postura(done) {
     const C = L.postura, ov = $('#ov'); let k = 0, ocupado = false;
     ov.className = 'on postura';
-    ov.innerHTML = `<div class="po-fundo"></div><p class="po-dica">${U('posturaDica')}</p><div class="po-cena"><img class="po-menina" alt=""><img class="po-16" alt="" src="${C.laura16.img}"><img class="po-mao" alt="" src="${C.mao.img}"><button class="po-ponto"><i></i><span></span></button><div class="po-espadas"></div></div>`;
-    const cena = $('.po-cena', ov), img = $('.po-menina', ov), mao = $('.po-mao', ov), ponto = $('.po-ponto', ov), espadas = $('.po-espadas', ov), l16 = $('.po-16', ov);
+    ov.innerHTML = `<div class="po-fundo"></div><p class="po-dica">${U('posturaDica')}</p><div class="po-cena"><img class="po-menina" alt=""><img class="po-mao" alt="" src="${C.mao.img}"><button class="po-ponto"><i></i><span></span></button><div class="po-espadas"></div></div>`;
+    const cena = $('.po-cena', ov), img = $('.po-menina', ov), mao = $('.po-mao', ov), ponto = $('.po-ponto', ov), espadas = $('.po-espadas', ov);
     const M = C.sprites;
     const mede = () => { // a menina ocupa 64% da altura; tudo é posicionado pela caixa dela
       const s = C.passos[k], m = M[s.pose], h = Math.min(innerHeight * .64, 560), w = h * m.w / m.h;
@@ -377,7 +386,6 @@
       ponto.classList.add('on');
       espadas.innerHTML = s.espada.map(([x, y, w, h]) => `<button class="po-espada" style="left:${b.x + x * b.w}px;top:${b.y + y * b.h}px;width:${w * b.w}px;height:${h * b.h}px" aria-hidden="true"></button>`).join('');
       espadas.querySelectorAll('.po-espada').forEach((e) => e.addEventListener('click', (ev) => quaseToca(ev.clientX, ev.clientY)));
-      const m16 = M['menina-4'], hb = b.h * C.laura16.altura; l16.style.height = hb + 'px'; l16.style.left = innerWidth * .5 - hb * .32 + 'px'; l16.style.top = innerHeight * .9 - hb + 'px';
     };
     const maoEm = (x, y, recua) => { // a manopla pousa com os dedos no ponto
       const b = mede(), mh = b.h * C.mao.altura, mw = mh * M['mao-cavaleiro'].w / M['mao-cavaleiro'].h;
@@ -396,11 +404,10 @@
       if (k < C.passos.length - 1) {
         setTimeout(() => { img.classList.add('troca'); }, 900);
         setTimeout(() => { mao.className = 'po-mao'; k++; monta(); img.classList.remove('troca'); ocupado = false; }, 1600);
-      } else { // o ombro: por um segundo e meio, a Laura de 16 anos em guarda
-        setTimeout(() => { cena.classList.add('dezesseis'); A.brilho(); }, 1100);
-        setTimeout(() => cena.classList.remove('dezesseis'), 2700);
-        setTimeout(() => { ov.classList.add('sai'); }, 4300);
-        setTimeout(() => { ov.className = ''; ov.innerHTML = ''; registrar('espada', st.d.tocouEspada ? 'tocou' : 'respeitou'); done(); }, 5600);
+      } else { // o ombro: a mão fica pousada, a menina firme, e a cena se desfaz devagar
+        setTimeout(() => { A.brilho(); }, 1100);
+        setTimeout(() => { ov.classList.add('sai'); }, 3200);
+        setTimeout(() => { ov.className = ''; ov.innerHTML = ''; registrar('espada', st.d.tocouEspada ? 'tocou' : 'respeitou'); done(); }, 4500);
       }
     });
     monta(); const rs = () => monta(); addEventListener('resize', rs);
@@ -422,7 +429,7 @@
       raf = requestAnimationFrame(anda);
     };
     const termina = () => {
-      $('.ro-dica', ov).classList.add('some'); A.sino();
+      $('.ro-dica', ov).classList.add('some'); A.arq('assets/audio/sfx/sino-longe.mp3', .85, () => A.sino());
       const n = $('.ro-nome', ov); n.textContent = tx(it.fim); setTimeout(() => n.classList.add('on'), 600);
       setTimeout(() => { done(); fimCapitulo(); }, 4200);
     };

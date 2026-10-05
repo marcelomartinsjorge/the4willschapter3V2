@@ -1,6 +1,6 @@
 /* As Quatro Vontades · Capítulo III · O Cavaleiro
    Roteiro gerado a partir do texto aprovado (PT e EN), sem nenhuma palavra alterada.
-   k: "m" = fala da menina (nítida, sem voz). pendente = dublagem a regravar (hoje, sem voz). */
+   k: "m" = fala da menina (nítida, sem voz). */
 window.CAP3 = {
  "id": "cap03",
  "ui": {
@@ -162,6 +162,10 @@ window.CAP3 = {
      "t": {
       "pt": "Não sei dizer há quanto tempo ando, nem por que os corredores deste castelo me são estranhos e ao mesmo tempo sei exatamente onde vão dar. As pedras, sob os pés, guardam o frio da noite inteira.",
       "en": "I couldn't say how long I've been walking, or why these castle corridors feel foreign to me and yet I know exactly where each one leads. The stones under my feet hold the whole night's cold."
+     },
+     "voz": {
+      "src": "assets/audio/voz/cav-corredores.mp3",
+      "dur": 16.77
      }
     },
     {
@@ -185,6 +189,10 @@ window.CAP3 = {
      "t": {
       "pt": "O som da minha armadura ecoa pelo pátio vazio, metal contra as lajes, e um cão solitário levanta a cabeça na sombra dos estábulos. Não late.",
       "en": "The sound of my armor echoes across the empty courtyard, metal against flagstone, and a lone dog lifts its head in the shadow of the stables. It doesn't bark."
+     },
+     "voz": {
+      "src": "assets/audio/voz/cav-patio.mp3",
+      "dur": 15.96
      }
     },
     {
@@ -309,7 +317,10 @@ window.CAP3 = {
       "pt": "Minha voz sai firme, do jeito que sai sempre, mesmo falando com uma criança que mal me alcança a cintura. Ela se vira depressa, mas não grita. Os olhos, vermelhos de chorar, vão direto para a espada na minha cintura e ficam ali.",
       "en": "My voice comes out steady, the way it always does, even speaking to a child who barely reaches my waist. She turns quickly, but doesn't cry out. Her eyes, red from crying, go straight to the sword at my hip and stay there."
      },
-     "pendente": "cav-voz"
+     "voz": {
+      "src": "assets/audio/voz/cav-voz.mp3",
+      "dur": 18.29
+     }
     },
     {
      "t": {
@@ -344,7 +355,10 @@ window.CAP3 = {
       "pt": "Ela não responde e parece que por não ter uma resposta a faz querer chorar. Desembainho a espada devagar, só para que ela veja, e a lâmina pega a luz da vela e devolve um risco branco no teto.",
       "en": "She doesn't answer, and not having an answer seems to make her want to cry again. I draw the sword slowly, just so she can see it, and the blade catches the candlelight and throws a white line across the ceiling."
      },
-     "pendente": "cav-desembainho"
+     "voz": {
+      "src": "assets/audio/voz/cav-desembainho.mp3",
+      "dur": 16.35
+     }
     },
     {
      "t": {
@@ -550,7 +564,10 @@ window.CAP3 = {
       "pt": "Penso na pergunta mais do que deveria. Não conheço homem nenhum a quem chamar de amigo, nem lembro de ter tido um pai, e mesmo assim a pergunta não me soa estranha — soa apenas incompleta, como uma resposta que existe em algum lugar que não consigo alcançar.",
       "en": "I think about the question longer than I should. I know no man I'd call a friend, and I don't remember having had a father, and still the question doesn't strike me as strange — only incomplete, like an answer that exists somewhere I can't reach."
      },
-     "pendente": "cav-pensa"
+     "voz": {
+      "src": "assets/audio/voz/cav-pensa.mp3",
+      "dur": 21.71
+     }
     },
     {
      "t": {
@@ -581,7 +598,10 @@ window.CAP3 = {
       "pt": "Ela já dorme antes que eu termine de falar. Refaço o caminho — o jardim, a estátua da mulher com a balança, o pátio onde o cão agora dorme. Ao sair pelo portão, tento reter o rosto da criança, e já não consigo. Fica só uma palavra, um nome que não lembro ter aprendido e que, mesmo assim, soube de cor.",
       "en": "She's asleep before I finish speaking. I retrace my path — the garden, the statue of the woman with the scales, the courtyard where the dog now sleeps. Stepping through the gate, I try to hold onto the child's face, and already I can't. Only a word remains, a name I don't remember learning and, even so, knew by heart."
      },
-     "pendente": "cav-portao"
+     "voz": {
+      "src": "assets/audio/voz/cav-portao.mp3",
+      "dur": 31.56
+     }
     },
     {
      "gesto": "rosto",
@@ -711,10 +731,6 @@ window.CAP3 = {
     0.95
    ],
    "altura": 0.42
-  },
-  "laura16": {
-   "img": "assets/images/postura/laura-16-guarda.webp",
-   "altura": 1.32
   }
  },
  "passos": [

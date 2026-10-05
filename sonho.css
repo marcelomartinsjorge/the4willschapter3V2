@@ -17,13 +17,12 @@ button:focus-visible { outline: 1px solid var(--ouro); outline-offset: 4px; }
 body.dourada #tinta { background: radial-gradient(ellipse at 55% 45%, rgba(60,36,10,0) 28%, rgba(6,4,2,.8) 100%), linear-gradient(rgba(120,80,30,.12), rgba(20,16,30,.32)); }
 #part, #nevoa { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 #nevoa { mix-blend-mode: screen; filter: blur(6px); }
-#gelo { position: fixed; inset: 0; pointer-events: none; opacity: var(--gelo); transition: opacity 3s;
+#gelo { position: fixed; inset: -4%; pointer-events: none; opacity: var(--gelo); transition: opacity 3s; filter: blur(22px);
   background:
-    radial-gradient(circle at 0 0, rgba(220,232,250,.55), rgba(220,232,250,0) 26%),
-    radial-gradient(circle at 100% 0, rgba(220,232,250,.45), rgba(220,232,250,0) 22%),
-    radial-gradient(circle at 0 100%, rgba(220,232,250,.5), rgba(220,232,250,0) 24%),
-    radial-gradient(circle at 100% 100%, rgba(220,232,250,.55), rgba(220,232,250,0) 28%);
-  -webkit-mask: repeating-conic-gradient(from 10deg, #000 0 4deg, rgba(0,0,0,.55) 4deg 9deg); mask: repeating-conic-gradient(from 10deg, #000 0 4deg, rgba(0,0,0,.55) 4deg 9deg); }
+    radial-gradient(circle at 0 0, rgba(220,232,250,.42), rgba(220,232,250,0) 24%),
+    radial-gradient(circle at 100% 0, rgba(220,232,250,.34), rgba(220,232,250,0) 20%),
+    radial-gradient(circle at 0 100%, rgba(220,232,250,.38), rgba(220,232,250,0) 22%),
+    radial-gradient(circle at 100% 100%, rgba(220,232,250,.42), rgba(220,232,250,0) 26%); }
 #pegadas { position: fixed; inset: 0; pointer-events: none; }
 .pe { position: absolute; width: 22px; height: 34px; border-radius: 50% 50% 46% 46%; background: radial-gradient(ellipse, rgba(225,236,252,.55), rgba(225,236,252,0) 70%); animation: pe 5s ease forwards; }
 @keyframes pe { 0% { opacity: 0; transform: scale(.7); } 15% { opacity: 1; transform: scale(1); } 100% { opacity: 0; } }
@@ -52,10 +51,11 @@ body.dourada #tinta { background: radial-gradient(ellipse at 55% 45%, rgba(60,36
 @keyframes condensaT { from { opacity: 0; filter: blur(14px); letter-spacing: .2em; } to { opacity: 1; filter: blur(0); } }
 
 /* ---------- o texto: palavras que se condensam da névoa */
-#texto { position: fixed; left: 50%; transform: translateX(-50%); bottom: 17vh; width: min(660px, 88vw); max-height: 60vh; overflow-y: auto; scrollbar-width: none; z-index: 2; padding: 24px 6px 8px;
-  -webkit-mask: linear-gradient(transparent, #000 34px); mask: linear-gradient(transparent, #000 34px); }
+#veu { position: fixed; left: 0; right: 0; bottom: 0; height: 78vh; pointer-events: none; z-index: 1; background: radial-gradient(ellipse 62% 56% at 50% 70%, rgba(3,6,12,.58), rgba(3,6,12,0) 100%); }
+#texto { position: fixed; left: 0; right: 0; margin: 0 auto; bottom: 15vh; width: min(660px, 88vw); max-height: 58vh; overflow-y: auto; scrollbar-width: none; z-index: 2; padding: 4px 6px 6px; transition: bottom .9s ease, max-height .9s ease; }
 #texto::-webkit-scrollbar { display: none; }
-#texto::before { content: ''; position: fixed; inset: -20% -30%; z-index: -1; pointer-events: none; background: radial-gradient(ellipse at 50% 60%, rgba(3,6,12,.6), rgba(3,6,12,0) 65%); }
+#texto.rola { padding-top: 26px; -webkit-mask: linear-gradient(transparent, #000 30px); mask: linear-gradient(transparent, #000 30px); } /* só esmaece o alto quando o texto não cabe */
+body.gesto #texto { bottom: calc(5vh + 46px + var(--gh, 120px) + 10px); max-height: calc(100vh - (5vh + 46px + var(--gh, 120px) + 10px) - 96px); }
 .p { font-size: clamp(19px, 2.15vw, 24px); line-height: 1.7; margin: 0 0 .85em; text-shadow: 0 1px 14px rgba(0,0,0,.85), 0 0 2px rgba(0,0,0,.6); color: #dfe7f2; }
 .p.fala { font-style: italic; }
 .w { display: inline; opacity: 0; filter: blur(8px); animation: condensa 2.1s cubic-bezier(.2,.6,.2,1) forwards; animation-delay: var(--d, 0ms); }
@@ -91,7 +91,7 @@ body.dourada #tinta { background: radial-gradient(ellipse at 55% 45%, rgba(60,36
 .g-trilho { --k: 0; position: relative; height: 54px; margin: 0 auto; width: min(420px, 82vw); border-radius: 30px; border: 1px solid rgba(201,214,234,.28); background: linear-gradient(90deg, rgba(255,200,120,.32) calc(var(--k) * 100%), rgba(4,8,16,.4) 0); touch-action: none; cursor: grab; }
 .g-trilho .g-alca { position: absolute; top: 50%; left: calc(6px + var(--k) * (100% - 52px)); width: 40px; height: 40px; margin-top: -20px; border-radius: 50%; background: radial-gradient(circle, #fff3d6, #e8c47a 60%, rgba(232,196,122,.2)); box-shadow: 0 0 20px rgba(232,196,122,.6); }
 .g-trilho.lamina { background: linear-gradient(90deg, rgba(235,242,255,.4) calc(var(--k) * 100%), rgba(4,8,16,.4) 0); }
-.g-trilho.vertical { width: 54px; height: min(220px, 30vh); background: linear-gradient(0deg, rgba(220,200,170,.35) calc(var(--k) * 100%), rgba(4,8,16,.4) 0); }
+.g-trilho.vertical { width: 54px; height: min(150px, 20vh); background: linear-gradient(0deg, rgba(220,200,170,.35) calc(var(--k) * 100%), rgba(4,8,16,.4) 0); }
 .g-trilho.vertical .g-alca { left: 50%; top: auto; bottom: calc(6px + var(--k) * (100% - 52px)); margin: 0 0 0 -20px; }
 #vidro { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 1; opacity: 0; transition: opacity 1.4s; touch-action: none; filter: blur(3px); }
 #vidro.on { opacity: 1; } #vidro.some { opacity: 0; transition: opacity 2.4s; pointer-events: none; }
@@ -117,9 +117,6 @@ body.dourada #tinta { background: radial-gradient(ellipse at 55% 45%, rgba(60,36
 .po-cena img { position: absolute; display: block; }
 .po-menina { transition: opacity .7s, filter .7s; filter: drop-shadow(0 0 18px rgba(255,210,140,.25)) brightness(.92); }
 .po-menina.troca { opacity: 0; filter: blur(8px); }
-.po-16 { opacity: 0; transition: opacity .9s; filter: drop-shadow(0 0 24px rgba(232,196,122,.5)) brightness(.95); pointer-events: none; }
-.po-cena.dezesseis .po-menina { opacity: 0; filter: blur(6px); }
-.po-cena.dezesseis .po-16 { opacity: .92; }
 .po-mao { opacity: 0; pointer-events: none; transition: opacity .6s, transform .9s cubic-bezier(.2,.7,.2,1); transform: translate(-40px, -50px); filter: drop-shadow(0 6px 18px rgba(0,0,0,.7)); }
 .po-mao.vem { opacity: 1; transform: none; }
 .po-mao.vem.recua { animation: recua 1.4s ease forwards; }
@@ -168,7 +165,7 @@ body.dourada #tinta { background: radial-gradient(ellipse at 55% 45%, rgba(60,36
 .c-fones { margin-top: 26px; font-style: italic; font-size: 15px; color: rgba(201,214,234,.55); }
 
 @media (max-width: 640px) {
-  #texto { bottom: 21vh; max-height: 54vh; width: 90vw; }
+  #texto { bottom: 18vh; max-height: 56vh; width: 90vw; }
   .p { font-size: 19px; line-height: 1.62; }
   #gesto { bottom: calc(4vh + 44px); }
   .po-dica { top: 9vh; padding: 0 20px; }
