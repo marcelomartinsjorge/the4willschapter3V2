@@ -45,7 +45,7 @@ window.CAP3 = {
    "jornada": "Jornada (Capítulos I, II e III)",
    "posicao": "{p}º de {n} leitores",
    "reler": "Reler o capítulo",
-   "prox4": "Capítulo IV · em breve",
+   "prox4": "Capítulo IV · Laus, o Azarão",
    "semJornada": "Jogue os capítulos anteriores neste navegador para somar a jornada."
   },
   "en": {
@@ -89,7 +89,7 @@ window.CAP3 = {
    "jornada": "Journey (Chapters I, II and III)",
    "posicao": "#{p} of {n} readers",
    "reler": "Read again",
-   "prox4": "Chapter IV · coming soon",
+   "prox4": "Chapter IV · Laus, the Underdog",
    "semJornada": "Play the earlier chapters in this browser to add up the journey."
   }
  },

@@ -486,7 +486,7 @@
       $('#fim').innerHTML = `<div class="fim-in"><p class="fim-nome">Laura.</p><p class="eyebrow">${U('fim')}</p>
         <div class="fim-pts"><p class="eyebrow">${U('ficou')}</p><p><span>${U('presenca')}</span><b>${n(p3)}</b></p>
         ${jornada != null ? `<p class="jornada"><span>${U('jornada')}</span><b>${n(jornada)}</b>${pos}</p>` : `<p class="sem">${U('semJornada')}</p>`}</div>
-        <div class="fim-bts"><button class="fim-reler">${U('reler')}</button><span class="fim-prox">${U('prox4')}</span></div></div>`;
+        <div class="fim-bts"><button class="fim-reler">${U('reler')}</button><a class="fim-prox" href="https://marcelomartinsjorge.github.io/the4willschapter4V2/">${U('prox4')} →</a></div></div>`;
       $('#fim .fim-reler').onclick = () => { $('#fim').className = ''; st.i = 0; st.lidas = {}; salvar(); render(1); };
     };
     desenha(null); $('#fim').className = 'on'; $('#ov').classList.add('sai'); setTimeout(() => { $('#ov').className = ''; $('#ov').innerHTML = ''; }, 1400); // o "Laura." do rosto dá lugar ao da tela final enviaPontos(p3, ant).then((srv) => { if (srv) desenha(srv); });

@@ -24,3 +24,7 @@
 - Poses da menina: 1 e 2 da primeira folha, 3 e 4 da segunda (na primeira, a espada da pose 4 encosta na pose 3).
 - Dos vídeos novos, foi cortada uma faixa da borda (marca d'água do canto). Os dois de arrasto (porta e espada) foram gravados com todo quadro como quadro-chave, para o dedo controlar sem engasgar.
 - **Nada pendente.** Tudo o que o capítulo pede está no pacote.
+
+## Versão 3
+
+- O botão da tela final agora leva ao Cap. IV: `https://marcelomartinsjorge.github.io/the4willschapter4V2/` ("Capítulo IV · Laus, o Azarão").
