@@ -45,7 +45,7 @@ window.CAP3 = {
    "jornada": "Jornada (Capítulos I, II e III)",
    "posicao": "{p}º de {n} leitores",
    "reler": "Reler o capítulo",
-   "prox4": "Capítulo IV · Laus, o Azarão",
+   "prox4": "Capítulo IV · Laus",
    "semJornada": "Jogue os capítulos anteriores neste navegador para somar a jornada."
   },
   "en": {
@@ -89,7 +89,7 @@ window.CAP3 = {
    "jornada": "Journey (Chapters I, II and III)",
    "posicao": "#{p} of {n} readers",
    "reler": "Read again",
-   "prox4": "Chapter IV · Laus, the Underdog",
+   "prox4": "Chapter IV · Laus",
    "semJornada": "Play the earlier chapters in this browser to add up the journey."
   }
  },
@@ -107,6 +107,7 @@ window.CAP3 = {
    "en": "I lie on my back and watch the ceiling until my eyes close on their own."
   }
  },
+ "proximo": "https://marcelomartinsjorge.github.io/the4willschapter4V2/",
  "paginas": [
   {
    "id": "limiar",
@@ -160,7 +161,7 @@ window.CAP3 = {
    "itens": [
     {
      "t": {
-      "pt": "Não sei dizer há quanto tempo ando, nem por que os corredores deste castelo me são estranhos e ao mesmo tempo sei exatamente onde vão dar. As pedras, sob os pés, guardam o frio da noite inteira.",
+      "pt": "Não sei dizer há quanto tempo ando, nem por que os corredores deste castelo me são estranhos se, ao mesmo tempo, sei exatamente aonde cada um vai dar. As pedras, sob os pés, guardam o frio da noite inteira.",
       "en": "I couldn't say how long I've been walking, or why these castle corridors feel foreign to me and yet I know exactly where each one leads. The stones under my feet hold the whole night's cold."
      },
      "voz": {
@@ -352,7 +353,7 @@ window.CAP3 = {
     },
     {
      "t": {
-      "pt": "Ela não responde e parece que por não ter uma resposta a faz querer chorar. Desembainho a espada devagar, só para que ela veja, e a lâmina pega a luz da vela e devolve um risco branco no teto.",
+      "pt": "Ela não responde, e não ter uma resposta parece lhe dar vontade de chorar de novo. Desembainho a espada devagar, só para que ela veja, e a lâmina pega a luz da vela e devolve um risco branco no teto.",
       "en": "She doesn't answer, and not having an answer seems to make her want to cry again. I draw the sword slowly, just so she can see it, and the blade catches the candlelight and throws a white line across the ceiling."
      },
      "voz": {
@@ -410,7 +411,7 @@ window.CAP3 = {
    "itens": [
     {
      "t": {
-      "pt": "Ela vence a própria hesitação — vejo o instante exato em que decide, o corpo inteiro se inclinando pra frente antes da boca se abrir.",
+      "pt": "Ela vence a própria hesitação — vejo o instante exato em que decide, o corpo inteiro se inclinando para a frente antes de a boca se abrir.",
       "en": "She fights down her own hesitation — I see the exact instant she decides, her whole body leaning forward before her mouth opens."
      }
     },
@@ -433,7 +434,7 @@ window.CAP3 = {
     },
     {
      "t": {
-      "pt": "Ponho a espada nas duas mãos dela, o peso maior do que ela espera — os braços descem um dedo antes de ela travar o cotovelo e segurar firme. Retiro sua mão esquerda do pomo, orientando a segurar a empunhadura somente com uma das mãos, e corrijo a direita, que aperta forte demais o suficiente pra tremer.",
+      "pt": "Ponho a espada nas duas mãos dela, o peso maior do que ela espera — os braços descem um dedo antes de ela travar o cotovelo e segurar firme. Retiro a mão esquerda dela do pomo, orientando-a a segurar a empunhadura com uma das mãos só, e corrijo a direita, que aperta com tanta força que chega a tremer.",
       "en": "I set the sword across both her hands, heavier than she expects — her arms drop an inch before she locks her elbows and holds firm. I lift her left hand off the pommel, guiding her to hold the grip with only one hand, and correct the right, which grips hard enough to shake."
      },
      "fundo": {
@@ -495,7 +496,7 @@ window.CAP3 = {
    "itens": [
     {
      "t": {
-      "pt": "Deixo-a movimentar a lâmina devagar, os pés bem plantados, o quadril virado do jeito certo. Corrijo a postura algumas vezes, com a mão no ombro dela, nunca na arma. Ela obedece cada ajuste sem perguntar o porquê.",
+      "pt": "Deixo-a movimentar a lâmina devagar, os pés bem plantados, o quadril virado do jeito certo. Corrijo a postura algumas vezes, com a mão no ombro dela, nunca na arma. Ela obedece a cada ajuste sem perguntar o porquê.",
       "en": "I let her move the blade slowly, feet planted, hips turned just so. I correct her stance a few times, my hand on her shoulder, never on the weapon. She follows every correction without asking why."
      }
     },
@@ -561,7 +562,7 @@ window.CAP3 = {
     },
     {
      "t": {
-      "pt": "Penso na pergunta mais do que deveria. Não conheço homem nenhum a quem chamar de amigo, nem lembro de ter tido um pai, e mesmo assim a pergunta não me soa estranha — soa apenas incompleta, como uma resposta que existe em algum lugar que não consigo alcançar.",
+      "pt": "Penso na pergunta mais do que deveria. Não conheço homem nenhum a quem chamar de amigo, nem me lembro de ter tido um pai, e mesmo assim a pergunta não me soa estranha — soa apenas incompleta, como uma resposta que existe em algum lugar que não consigo alcançar.",
       "en": "I think about the question longer than I should. I know no man I'd call a friend, and I don't remember having had a father, and still the question doesn't strike me as strange — only incomplete, like an answer that exists somewhere I can't reach."
      },
      "voz": {
@@ -595,7 +596,7 @@ window.CAP3 = {
    "itens": [
     {
      "t": {
-      "pt": "Ela já dorme antes que eu termine de falar. Refaço o caminho — o jardim, a estátua da mulher com a balança, o pátio onde o cão agora dorme. Ao sair pelo portão, tento reter o rosto da criança, e já não consigo. Fica só uma palavra, um nome que não lembro ter aprendido e que, mesmo assim, soube de cor.",
+      "pt": "Ela já dorme antes que eu termine de falar. Refaço o caminho — o jardim, a estátua da mulher com a balança, o pátio onde o cão agora dorme. Ao sair pelo portão, tento reter o rosto da criança, e já não consigo. Fica só uma palavra, um nome que não me lembro de ter aprendido e que, mesmo assim, soube de cor.",
       "en": "She's asleep before I finish speaking. I retrace my path — the garden, the statue of the woman with the scales, the courtyard where the dog now sleeps. Stepping through the gate, I try to hold onto the child's face, and already I can't. Only a word remains, a name I don't remember learning and, even so, knew by heart."
      },
      "voz": {

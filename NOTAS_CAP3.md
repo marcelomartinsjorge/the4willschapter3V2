@@ -25,6 +25,9 @@
 - Dos vídeos novos, foi cortada uma faixa da borda (marca d'água do canto). Os dois de arrasto (porta e espada) foram gravados com todo quadro como quadro-chave, para o dedo controlar sem engasgar.
 - **Nada pendente.** Tudo o que o capítulo pede está no pacote.
 
-## Versão 3
-
-- O botão da tela final agora leva ao Cap. IV: `https://marcelomartinsjorge.github.io/the4willschapter4V2/` ("Capítulo IV · Laus, o Azarão").
+## v3 (polimento pós-auditoria, 08/10)
+- Corrigido: a pontuação nunca era enviada ao Supabase (a chamada estava dentro de um comentário).
+- Tela final: só "Laura.", Reler e o link para o Capítulo IV (the4willschapter4V2). A Presença continua calculada, gravada e somada à jornada, mas não aparece.
+- Corredores: depois da escolha, o outro arco também acende e os dois somem juntos.
+- Porta: o rangido só começa depois da metade (como a dobradiça do Cap. II).
+- Português corrigido em 7 frases (só o PT; o inglês dublado não mudou).

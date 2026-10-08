@@ -309,6 +309,8 @@
       g.querySelectorAll('.g-arco').forEach((b) => b.addEventListener('click', () => {
         st.d.corredor = b.dataset.v; registrar('corredor', b.dataset.v); A.passo(2); A.passo(3);
         g.querySelectorAll('.g-arco').forEach((x) => (x.disabled = true)); b.classList.add('escolhido');
+        setTimeout(() => g.querySelectorAll('.g-arco').forEach((x) => x.classList.add('escolhido')), 500); // o outro corredor também acende: dão no mesmo lugar
+        setTimeout(() => { const par = $('.g-par', g); par && par.classList.add('mesmo'); }, 1100);
         Nevoa.alvo = 1; setTimeout(() => (Nevoa.alvo = P[st.i].nevoa), 1600); done();
       }));
       return null;
@@ -322,7 +324,7 @@
       let somou = false;
       return arrastar($('.g-trilho', g), { ritmo: .2, aoMudar: (k, ativo) => {
         if (videoScrub) { const { v, ini, fim } = videoScrub; const t = ini + k * (fim - ini); if (Math.abs(v.currentTime - t) > .03) v.currentTime = t; }
-        if (ativo && !somou && k > .02) { somou = true; A.arq('assets/audio/sfx/porta-rangido.mp3', .8, () => A.sopro(2.4, 160, .035, 5)); }
+        if (ativo && !somou && k > .5) { somou = true; A.arq('assets/audio/sfx/porta-rangido.mp3', .8, () => A.sopro(2.4, 160, .035, 5)); }
       }, aoFim: () => { done(); if (P[st.i].auto) later(irProxima, 1600); } });
     },
     vidro(it, done) { // a menina fala para o vidro escuro; o dedo desembaça
@@ -484,12 +486,12 @@
       const jornada = srv && srv.total != null ? Number(srv.total) : temAnt ? local : null;
       const pos = srv && srv.posicao ? `<em>${U('posicao').replace('{p}', n(srv.posicao)).replace('{n}', n(srv.leitores))}</em>` : '';
       $('#fim').innerHTML = `<div class="fim-in"><p class="fim-nome">Laura.</p><p class="eyebrow">${U('fim')}</p>
-        <div class="fim-pts"><p class="eyebrow">${U('ficou')}</p><p><span>${U('presenca')}</span><b>${n(p3)}</b></p>
-        ${jornada != null ? `<p class="jornada"><span>${U('jornada')}</span><b>${n(jornada)}</b>${pos}</p>` : `<p class="sem">${U('semJornada')}</p>`}</div>
-        <div class="fim-bts"><button class="fim-reler">${U('reler')}</button><a class="fim-prox" href="https://marcelomartinsjorge.github.io/the4willschapter4V2/">${U('prox4')} →</a></div></div>`;
+        <div class="fim-bts"><button class="fim-reler">${U('reler')}</button><a class="fim-prox" href="${L.proximo}">${U('prox4')} →</a></div></div>`;
+      // a Presença é calculada, gravada e somada à jornada, mas não aparece aqui: o capítulo termina no nome
       $('#fim .fim-reler').onclick = () => { $('#fim').className = ''; st.i = 0; st.lidas = {}; salvar(); render(1); };
     };
-    desenha(null); $('#fim').className = 'on'; $('#ov').classList.add('sai'); setTimeout(() => { $('#ov').className = ''; $('#ov').innerHTML = ''; }, 1400); // o "Laura." do rosto dá lugar ao da tela final enviaPontos(p3, ant).then((srv) => { if (srv) desenha(srv); });
+    desenha(null); $('#fim').className = 'on'; $('#ov').classList.add('sai'); setTimeout(() => { $('#ov').className = ''; $('#ov').innerHTML = ''; }, 1400); // o "Laura." do rosto dá lugar ao da tela final
+    enviaPontos(p3, ant).then((srv) => { if (srv) desenha(srv); });
   }
 
   // ---------------------------------------------------------------- capa, idioma, som, navegação
