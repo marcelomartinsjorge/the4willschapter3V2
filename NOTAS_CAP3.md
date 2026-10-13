@@ -1,5 +1,14 @@
 # Capítulo 3 (O Cavaleiro) · Notas
 
+## Versão 4 (plano de profissionalização)
+
+- **Sem título fantasma:** a capa termina de sair antes de a primeira cena começar; o título do limiar ficou nítido, com um véu escuro atrás.
+- **O texto começa sempre na mesma altura** em todas as telas.
+- **"Próxima" virou botão** (pílula com borda dourada).
+- **Andar mais rápido:** o primeiro toque traz a primeira frase, e as seguintes vêm sozinhas no compasso da voz; tocar em qualquer lugar adianta.
+- **O Cavaleiro deixa marca:** quem corrige a postura 3 vezes vê "Laura vai lembrar disso." no fim da postura, e a tela final mostra "A mão no ombro. Laura vai lembrar disso."
+
+
 ## Versão 2
 
 - **Postura sem a Laura de 16 anos:** removida. No último toque, a mão fica pousada no ombro da menina e a cena se desfaz devagar.

@@ -177,3 +177,29 @@ body.gesto #texto { bottom: calc(5vh + 46px + var(--gh, 120px) + 10px); max-heig
 }
 
 .g-par.mesmo .g-arco { opacity: 0 !important; transition: opacity 1.4s ease; }
+
+/* ---------- v4 · profissionalização ---------- */
+/* o texto começa sempre na mesma altura (o topo fica fixo; só o fim do bloco muda) */
+#texto { top: 40vh; bottom: calc(15vh + 40px); max-height: none; }
+body.gesto #texto { top: 34vh; bottom: calc(5vh + 46px + var(--gh, 120px) + 10px); max-height: none; }
+@media (max-width: 640px) { #texto { top: 44vh; bottom: calc(14vh + 30px); max-height: none; } body.gesto #texto { top: 40vh; } }
+@media (max-height: 560px) { #texto, body.gesto #texto { top: 30vh; } }
+/* a caminhada: a frase do passo condensa rápido */
+.frase .w { animation-duration: .8s; }
+/* "Próxima": um botão de verdade */
+#nav { align-items: center; }
+#prox { border: 1px solid rgba(232,196,122,.55); border-radius: 40px; padding: 12px 28px !important; background: rgba(10,14,26,.55); backdrop-filter: blur(6px); font-size: 15px; }
+#prox.on { color: #fff6e6; box-shadow: 0 0 24px rgba(232,196,122,.25); animation: chamarB 3s ease-in-out infinite; }
+@keyframes chamarB { 50% { box-shadow: 0 0 34px rgba(232,196,122,.5); border-color: rgba(232,196,122,.9); } }
+#volt { font-size: 20px !important; }
+/* o título do limiar: nítido, sem fantasma (um véu escuro atrás dele) */
+#titulo { background: radial-gradient(ellipse at 50% 50%, rgba(3,5,10,.7), rgba(3,5,10,.25) 55%, transparent 75%); }
+#titulo h1 { animation-duration: 2.6s; }
+/* aviso de consequência */
+#avisos { position: fixed; bottom: calc(96px + env(safe-area-inset-bottom, 0px)); left: 50%; transform: translateX(-50%); z-index: 9; display: flex; flex-direction: column; gap: 8px; align-items: center; pointer-events: none; width: max-content; max-width: 92vw; }
+.aviso { display: flex; align-items: center; gap: 12px; padding: 12px 20px 12px 14px; font-size: 17px; color: #fff6e6; background: rgba(6,9,18,.88); border: 1px solid rgba(232,196,122,.5); border-radius: 3px; box-shadow: 0 8px 30px rgba(0,0,0,.5); animation: ovEntra .7s ease; transition: opacity .8s; }
+.aviso.out { opacity: 0; }
+.cq-ico { flex: none; width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid var(--ouro); position: relative; display: inline-block; animation: cqPulso 1.6s ease-out 2; }
+.cq-ico::after { content: ''; position: absolute; inset: 5px; border-radius: 50%; background: var(--ouro); }
+@keyframes cqPulso { 0% { box-shadow: 0 0 0 0 rgba(232,196,122,.6); } 100% { box-shadow: 0 0 0 14px rgba(232,196,122,0); } }
+.fim-marca { display: flex; align-items: center; justify-content: center; gap: 10px; font-style: italic; font-size: 17px; color: rgba(228,235,244,.85); margin: 6px 0 26px; }

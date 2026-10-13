@@ -292,17 +292,22 @@
     andar(it, done) { // cada passo condensa uma frase; o primeiro passo dá voz ao Cavaleiro
       const g = $('#gesto'); g.innerHTML = `<button class="g-bt pegada" aria-label="${U('andar')}"><span></span></button>${legenda(U('andar'), U('andarDica'))}`;
       const frases = [...document.querySelectorAll('#texto .frase.oculta')]; let n = 0;
-      const bt = $('.g-bt', g);
+      const bt = $('.g-bt', g); let ritmo = 0;
       const passo = () => {
-        if (n >= frases.length) return; A.resume();
+        if (n >= frases.length) return; A.resume(); clearTimeout(ritmo);
         if (n === 0 && it.voz && A.on) A.falar(it.voz.src);
         A.passo(n); frases[n].classList.remove('oculta'); st.d.passos = ++n;
         const pe = document.createElement('i'); pe.className = 'pe'; pe.style.left = `${38 + (n % 2 ? -4 : 4) + Math.random() * 3}%`; pe.style.bottom = `${10 + n * 2.2}%`; $('#pegadas').appendChild(pe); setTimeout(() => pe.remove(), 5000);
-        if (n >= frases.length) { bt.disabled = true; done(); }
+        if (n >= frases.length) { bt.disabled = true; done(); return; }
+        // depois do primeiro passo, os outros vêm sozinhos no compasso da voz (o toque só adianta)
+        const vozMs = it.voz && A.on && A.ctx ? it.voz.dur * 1000 / frases.length : 3200;
+        ritmo = setTimeout(passo, Math.max(2600, vozMs));
       };
       bt.addEventListener('click', passo);
+      const toque = (e) => { if (e.target.closest('#topo, #nav, .g-bt')) return; passo(); };
+      document.addEventListener('pointerdown', toque);
       const kd = (e) => { if (e.code === 'Space') { e.preventDefault(); passo(); } }; addEventListener('keydown', kd);
-      return () => removeEventListener('keydown', kd);
+      return () => { clearTimeout(ritmo); removeEventListener('keydown', kd); document.removeEventListener('pointerdown', toque); };
     },
     corredores(it, done) { // dois corredores: os dois dão no mesmo lugar
       const g = $('#gesto'); g.innerHTML = `<p class="g-tit">${U('corrDica')}</p><div class="g-par"><button class="g-arco" data-v="esq">← ${U('esq')}</button><button class="g-arco" data-v="dir">${U('dir')} →</button></div>`;
@@ -407,13 +412,21 @@
         setTimeout(() => { img.classList.add('troca'); }, 900);
         setTimeout(() => { mao.className = 'po-mao'; k++; monta(); img.classList.remove('troca'); ocupado = false; }, 1600);
       } else { // o ombro: a mão fica pousada, a menina firme, e a cena se desfaz devagar
-        setTimeout(() => { A.brilho(); }, 1100);
+        setTimeout(() => { A.brilho(); if ((st.d.correcoes || 0) >= 3) aviso(U('lembrar')); }, 1100);
         setTimeout(() => { ov.classList.add('sai'); }, 3200);
         setTimeout(() => { ov.className = ''; ov.innerHTML = ''; registrar('espada', st.d.tocouEspada ? 'tocou' : 'respeitou'); done(); }, 4500);
       }
     });
     monta(); const rs = () => monta(); addEventListener('resize', rs);
     return () => { removeEventListener('resize', rs); ov.className = ''; ov.innerHTML = ''; };
+  }
+
+  // aviso de consequência (o mesmo do Cap. II): uma escolha que volta mais adiante
+  function aviso(t) {
+    let box = $('#avisos'); if (!box) { box = document.createElement('div'); box.id = 'avisos'; document.body.appendChild(box); }
+    const el = document.createElement('div'); el.className = 'aviso'; el.innerHTML = `<span class="cq-ico" aria-hidden="true"></span><span>${esc(t)}</span>`;
+    box.appendChild(el); if (A.ctx && A.on) { A.tom(392, 1.2, .03, 'sine', 0); A.tom(587, 1.4, .02, 'sine', .12); }
+    setTimeout(() => el.classList.add('out'), 4600); setTimeout(() => el.remove(), 5400);
   }
 
   // ---------------------------------------------------------------- o rosto que se apaga
@@ -485,7 +498,7 @@
       const local = (ant.c1 || 0) + (ant.c2 || 0) + p3, temAnt = ant.c1 != null || ant.c2 != null;
       const jornada = srv && srv.total != null ? Number(srv.total) : temAnt ? local : null;
       const pos = srv && srv.posicao ? `<em>${U('posicao').replace('{p}', n(srv.posicao)).replace('{n}', n(srv.leitores))}</em>` : '';
-      $('#fim').innerHTML = `<div class="fim-in"><p class="fim-nome">Laura.</p><p class="eyebrow">${U('fim')}</p>
+      $('#fim').innerHTML = `<div class="fim-in"><p class="fim-nome">Laura.</p><p class="eyebrow">${U('fim')}</p>${(st.d.correcoes || 0) >= 3 ? `<p class="fim-marca"><span class="cq-ico" aria-hidden="true"></span>${U('marca')}</p>` : ''}
         <div class="fim-bts"><button class="fim-reler">${U('reler')}</button><a class="fim-prox" href="${L.proximo}">${U('prox4')} →</a></div></div>`;
       // a Presença é calculada, gravada e somada à jornada, mas não aparece aqui: o capítulo termina no nome
       $('#fim .fim-reler').onclick = () => { $('#fim').className = ''; st.i = 0; st.lidas = {}; salvar(); render(1); };
@@ -511,7 +524,7 @@
   }
   function entrar(recomeca) {
     if (recomeca) { st = novo(); salvar(); }
-    A.init(); A.resume(); $('#capa').classList.add('fora'); setTimeout(() => ($('#capa').style.display = 'none'), 1800); render(1);
+    A.init(); A.resume(); $('#capa').classList.add('fora'); setTimeout(() => ($('#capa').style.display = 'none'), 1000); setTimeout(() => render(1), 1000);
   }
   function inicia() {
     Nevoa.init(); Part.init(); requestAnimationFrame(loop); textosFixos();
