@@ -98,6 +98,10 @@ window.CAP3 = {
   }
  },
  "cap2fim": {
+  "garganta": {
+   "pt": "Deito de lado. A garganta ainda dói de tudo o que eu não disse. Quando o sino bate longe, meus olhos já estão fechando.",
+   "en": "I lie on my side. My throat still aches from everything I didn’t say. When the bell rings far away, my eyes are already closing."
+  },
   "agitado": {
    "pt": "Deito de lado, depois do outro, depois de costas. Quando o sino bate longe, meus olhos já estão fechando.",
    "en": "I lie on one side, then the other, then on my back. When the bell rings far away, my eyes are already closing."

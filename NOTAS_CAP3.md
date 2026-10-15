@@ -40,3 +40,6 @@
 - Corredores: depois da escolha, o outro arco também acende e os dois somem juntos.
 - Porta: o rangido só começa depois da metade (como a dobradiça do Cap. II).
 - Português corrigido em 7 frases (só o PT; o inglês dublado não mudou).
+
+## v5 (15/10/2026)
+- Nova frase de transição do Cap. II para quem engoliu 2 ou mais coisas: "Deito de lado. A garganta ainda dói de tudo o que eu não disse…" (lê `aqv_estado.cap2.engoliu`).

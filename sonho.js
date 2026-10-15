@@ -248,7 +248,8 @@
     const mostraTitulo = () => { tit.innerHTML = `<p class="eyebrow">${U('cap')}</p><h1>${U('titulo')}</h1><p class="sub">${U('sub')}</p>`; tit.className = 'on'; later(() => { st.lidas[p.id] = 1; salvar(); pronta(true); }, 2200); };
     if (c2 && !st.lidas[p.id]) {
       const sof = c2.duelo ? c2.duelo.sofridos || 0 : 0, peso = c2.peso || 0;
-      const k = peso >= 3 || sof >= 2 ? 'agitado' : peso === 0 ? 'leve' : 'meio';
+      const eng = (c2.engoliu || []).length;
+      const k = eng >= 2 && L.cap2fim.garganta ? 'garganta' : peso >= 3 || sof >= 2 ? 'agitado' : peso === 0 ? 'leve' : 'meio';
       const el = paragrafo({ t: L.cap2fim[k] }); el.classList.add('limiar');
       later(() => el.classList.add('desfaz'), 4200); later(() => { el.remove(); mostraTitulo(); }, 7200);
     } else mostraTitulo();
