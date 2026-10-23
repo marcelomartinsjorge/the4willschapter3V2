@@ -274,7 +274,7 @@ window.CAP3 = {
      },
      "voz": {
       "src": "assets/audio/narration/line3.mp3",
-      "dur": 13.71
+      "dur": 13.01
      }
     },
     {
@@ -570,12 +570,12 @@ window.CAP3 = {
     },
     {
      "t": {
-      "pt": "Penso na pergunta mais do que deveria. Não conheço homem nenhum a quem chamar de amigo, nem me lembro de ter tido um pai, e mesmo assim a pergunta não me soa estranha: soa apenas incompleta, como uma resposta que existe em algum lugar que não consigo alcançar.",
-      "en": "I think about the question longer than I should. I know no man I'd call a friend, and I don't remember having had a father, and still the question doesn't strike me as strange — only incomplete, like an answer that exists somewhere I can't reach."
+      "pt": "Penso na pergunta mais do que deveria. Não conheço homem nenhum a quem chamar de amigo, nem me lembro de ter tido um pai, e mesmo assim a pergunta não me soa estranha: soa apenas incompleta, como um nome que eu devia saber.",
+      "en": "I think about the question longer than I should. I know no man I'd call a friend, and I don't remember having had a father, and still the question doesn't strike me as strange — only incomplete, like a name I ought to know."
      },
      "voz": {
       "src": "assets/audio/voz/cav-pensa.mp3",
-      "dur": 21.71
+      "dur": 18.63
      }
     },
     {

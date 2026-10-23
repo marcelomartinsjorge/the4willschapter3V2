@@ -50,5 +50,6 @@
 - Narração sem voz: a decisão da menina só pelo gesto; a espada em frases curtas; “depois de um tempo” (sem minutos); “Levanto-a, leve demais”.
 - 🎙 jardim e dormir: travessões viraram dois-pontos (só PT).
 
-### Regravar quando houver sessão de vozes
-- dormir (cav): “como uma resposta que existe em algum lugar que não consigo alcançar” → o Korath não faz analogia abstrata. Troca sugerida: “como um nome que eu devia saber”.
+### Regravações feitas (23/10)
+- `narration/line3.mp3` (quarto): nova gravação completa, 13,01 s (“…wax dripping down the candlestick beside her. Not just any child.”).
+- `voz/cav-pensa.mp3`: o fim “only incomplete, like a name I ought to know” emendado na faixa original, 18,63 s (texto PT/EN atualizado).
