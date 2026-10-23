@@ -43,3 +43,12 @@
 
 ## v5 (15/10/2026)
 - Nova frase de transição do Cap. II para quem engoliu 2 ou mais coisas: "Deito de lado. A garganta ainda dói de tudo o que eu não disse…" (lê `aqv_estado.cap2.engoliu`).
+
+## v6 · revisão pelo Prompt Mestre v2 (23/10)
+- Ponte do Cap. II (cap2fim): frases novas, sem copiar o fim da c08 do II.
+- Menina: “com a voz rouca”.
+- Narração sem voz: a decisão da menina só pelo gesto; a espada em frases curtas; “depois de um tempo” (sem minutos); “Levanto-a, leve demais”.
+- 🎙 jardim e dormir: travessões viraram dois-pontos (só PT).
+
+### Regravar quando houver sessão de vozes
+- dormir (cav): “como uma resposta que existe em algum lugar que não consigo alcançar” → o Korath não faz analogia abstrata. Troca sugerida: “como um nome que eu devia saber”.

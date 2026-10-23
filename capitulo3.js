@@ -103,16 +103,16 @@ window.CAP3 = {
    "en": "I lie on my side. My throat still aches from everything I didn’t say. When the bell rings far away, my eyes are already closing."
   },
   "agitado": {
-   "pt": "Deito de lado, depois do outro, depois de costas. Quando o sino bate longe, meus olhos já estão fechando.",
-   "en": "I lie on one side, then the other, then on my back. When the bell rings far away, my eyes are already closing."
+   "pt": "O lençol ainda está torto de tanto eu virar. Quando o sino bate longe, meus olhos já estão fechando.",
+   "en": "The sheet is still twisted from all my turning. When the bell rings far away, my eyes are already closing."
   },
   "leve": {
-   "pt": "Deito sem tirar a poeira dos pés e durmo antes de o sino bater.",
-   "en": "I lie down without brushing the dust off my feet and fall asleep before the bell."
+   "pt": "A poeira do laranjal ainda está nos meus pés. Durmo antes de o sino bater.",
+   "en": "The orangery dust is still on my feet. I’m asleep before the bell."
   },
   "meio": {
-   "pt": "Deito de costas e fico olhando o teto até os olhos fecharem sozinhos.",
-   "en": "I lie on my back and watch the ceiling until my eyes close on their own."
+   "pt": "O teto está escuro. Os olhos fecham sozinhos.",
+   "en": "The ceiling is dark. My eyes close on their own."
   }
  },
  "proximo": "https://marcelomartinsjorge.github.io/the4willschapter4V2/",
@@ -223,7 +223,7 @@ window.CAP3 = {
    "itens": [
     {
      "t": {
-      "pt": "Atravesso um jardim, contornando uma estátua alta de mulher com uma balança nas mãos. De novo a sensação de já ter passado por ali — não lembrança, algo mais raso, mas familiar. No fim do corredor, uma porta entreaberta deixa escapar um fio de luz de vela.",
+      "pt": "Atravesso um jardim, contornando uma estátua alta de mulher com uma balança nas mãos. De novo a sensação de já ter passado por ali: não lembrança, algo mais raso, mas familiar. No fim do corredor, uma porta entreaberta deixa escapar um fio de luz de vela.",
       "en": "I cross a garden, skirting a tall statue of a woman holding a set of scales. Again that sense of having walked this way before — not memory, something thinner, but familiar all the same. At the end of the hall, a door stands ajar, a thread of candlelight slipping through."
      },
      "voz": {
@@ -282,8 +282,8 @@ window.CAP3 = {
     },
     {
      "t": {
-      "pt": "— Eu não quero ter que ser rainha — ela fala para o vidro escuro, a voz embaçada de quem chorou até a garganta doer. — Isso é injusto.",
-      "en": "\"I don't want to have to be queen,\" she says to the dark glass, her voice thick from crying until her throat hurt. \"It isn't fair.\""
+      "pt": "— Eu não quero ter que ser rainha — ela fala para o vidro escuro, com a voz rouca. — Isso é injusto.",
+      "en": "\"I don't want to have to be queen,\" she says to the dark glass, her voice hoarse. \"It isn't fair.\""
      },
      "k": "m"
     },
@@ -419,8 +419,8 @@ window.CAP3 = {
    "itens": [
     {
      "t": {
-      "pt": "Ela vence a própria hesitação — vejo o instante exato em que decide, o corpo inteiro se inclinando para a frente antes de a boca se abrir.",
-      "en": "She fights down her own hesitation — I see the exact instant she decides, her whole body leaning forward before her mouth opens."
+      "pt": "O corpo inteiro dela se inclina para a frente antes de a boca se abrir.",
+      "en": "Her whole body leans forward before her mouth opens."
      }
     },
     {
@@ -442,8 +442,8 @@ window.CAP3 = {
     },
     {
      "t": {
-      "pt": "Ponho a espada nas duas mãos dela, o peso maior do que ela espera — os braços descem um dedo antes de ela travar o cotovelo e segurar firme. Retiro a mão esquerda dela do pomo, orientando-a a segurar a empunhadura com uma das mãos só, e corrijo a direita, que aperta com tanta força que chega a tremer.",
-      "en": "I set the sword across both her hands, heavier than she expects — her arms drop an inch before she locks her elbows and holds firm. I lift her left hand off the pommel, guiding her to hold the grip with only one hand, and correct the right, which grips hard enough to shake."
+      "pt": "Ponho a espada nas duas mãos dela. É mais pesada do que ela espera, e os braços descem um dedo antes de ela travar os cotovelos. Tiro a mão esquerda dela do pomo: uma mão só no cabo. Corrijo a direita, que aperta tanto que treme.",
+      "en": "I set the sword in both her hands. It’s heavier than she expects, and her arms drop an inch before she locks her elbows. I take her left hand off the pommel: one hand on the grip. I correct the right, which grips so hard it shakes."
      },
      "fundo": {
       "img": "assets/images/maos-empunhadura.jpg",
@@ -527,8 +527,8 @@ window.CAP3 = {
    "itens": [
     {
      "t": {
-      "pt": "Depois de alguns minutos, o peso vence o entusiasmo e ela me devolve a espada com as duas mãos, com cuidado.",
-      "en": "After a few minutes, the weight wins out over the excitement, and she hands the sword back to me with both hands, carefully."
+      "pt": "Depois de um tempo, o braço dela vence o entusiasmo, e ela me devolve a espada com as duas mãos, com cuidado.",
+      "en": "After a while, her arm gives out before her excitement does, and she hands the sword back to me with both hands, carefully."
      }
     },
     {
@@ -557,8 +557,8 @@ window.CAP3 = {
     },
     {
      "t": {
-      "pt": "Ela faz que sim, um bocejo interrompendo o gesto no meio. Levanto-a — leve demais, um peso que mal registro nos braços — e a deito, puxando a coberta até o queixo.",
-      "en": "She nods, a yawn breaking the motion in half. I lift her — too light, a weight I barely register in my arms — and lay her down, pulling the blanket up to her chin."
+      "pt": "Ela faz que sim, um bocejo interrompendo o gesto no meio. Levanto-a, leve demais, e a deito, puxando a coberta até o queixo.",
+      "en": "She nods, a yawn breaking the motion in half. I lift her, too light, and lay her down, pulling the blanket up to her chin."
      }
     },
     {
@@ -570,7 +570,7 @@ window.CAP3 = {
     },
     {
      "t": {
-      "pt": "Penso na pergunta mais do que deveria. Não conheço homem nenhum a quem chamar de amigo, nem me lembro de ter tido um pai, e mesmo assim a pergunta não me soa estranha — soa apenas incompleta, como uma resposta que existe em algum lugar que não consigo alcançar.",
+      "pt": "Penso na pergunta mais do que deveria. Não conheço homem nenhum a quem chamar de amigo, nem me lembro de ter tido um pai, e mesmo assim a pergunta não me soa estranha: soa apenas incompleta, como uma resposta que existe em algum lugar que não consigo alcançar.",
       "en": "I think about the question longer than I should. I know no man I'd call a friend, and I don't remember having had a father, and still the question doesn't strike me as strange — only incomplete, like an answer that exists somewhere I can't reach."
      },
      "voz": {
